@@ -1,0 +1,70 @@
+<!--<p-dialog header="" [(visible)]="displayBasic" styleClass="confirmation-content" [style]="{width: '30vw'}" >-->
+<!--    <div class="modal-header">-->
+<!--        <h4 class="modal-title">Anket Soruları Cevapları</h4>-->
+<!--        <button type="button" class="btn-close" aria-label="Close" (click)="displayBasic=false"></button>-->
+<!--    </div>-->
+<!--    <div class="modal-body">-->
+<!--        <p *ngFor="let sorular of questions index as i">-->
+<!--            {{i+1}}. Sorunun Cevabı = {{sorular.cevap.toString()}}-->
+<!--        </p>-->
+<!--    </div>-->
+<!--    <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-outline-dark" (click)="displayBasic=false">Kapat</button>-->
+<!--    </div>-->
+<!--</p-dialog>-->
+<div class="card card-body">
+
+
+<form action="" [formGroup]="questionForm">
+    <mat-accordion>
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Adınız
+            </mat-panel-title>
+            <mat-panel-description>
+                Lütfen Adınızı giriniz
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+            <mat-label>Adınızı giriniz</mat-label>
+            <input matInput type="text"  placeholder="Cevabınız" formControlName="firstName"  class="form-control" required>
+            <mat-error>{{nameRequried}}</mat-error>
+        </mat-form-field>
+        <mat-action-row>
+            <button mat-button color="primary" (click)="nextStepForFirstQuestion()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let quastion of questions index as i" [expanded]="step === quastion.key"
+                         (opened)="setStep(quastion.key)" hideToggle [disabled]="!quastion.durum">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{i+1}}. Soru
+            </mat-panel-title>
+            <mat-panel-description>
+                {{quastion.soru}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field *ngIf="quastion.key!=2">
+            <mat-label>Cevabı Yazınız</mat-label>
+            <input matInput type="text"  placeholder="Cevabınız" formControlName="cevap{{i+1}}"  class="form-control" required>
+            <mat-error>{{errorMessage}}</mat-error>
+        </mat-form-field>
+            <ul *ngIf="quastion.key==2">
+                <li *ngFor="let answers of checkboxAnswers index as i">
+                    <mat-checkbox formControlName="chkbox{{i+1}}">
+                        {{answers.cevap}}
+                    </mat-checkbox>
+                </li>
+            </ul>
+        <mat-action-row>
+            <button *ngIf="quastion.key!=0" mat-button color="warn" (click)="prevStep(quastion)">Previous</button>
+            <button *ngIf="quastion.key!=5" mat-button color="primary" (click)="nextStep(quastion, 'cevap' + (i+1))">Next</button>
+            <button *ngIf="quastion.key==5" mat-button color="primary" (click)="nextStep(quastion, 'cevap' + (i+1))">Save</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>
+</form>
+
+<app-answers [questionnaires]="anketSonuclari" ></app-answers>
+</div>

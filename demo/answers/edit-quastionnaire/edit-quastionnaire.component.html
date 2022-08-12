@@ -1,0 +1,61 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <div class="modal-title h4" id="example-modal-sizes-title-lg">
+            <ng-container>
+                Anketi Güncelle
+            </ng-container>
+        </div>
+    </div>
+    <div class="overlay overlay-block cursor-default modal-body" style="min-height: 404px;">
+        <ng-container>
+            <form action="#" class="form form-label-right" [formGroup]="editedQuestionnaire">
+                <div class="form-group row">
+                    <div class="col-lg-4 ">
+                        <label class="form-label">İsminiz</label>
+                        <input type="text" class="form-control form-control-lg form-control-solid" name="firstName"
+                               placeholder="Adınız" autocomplete="off" formControlName="firstName"/>
+                        <div class="invalid-feedback" *ngIf="controlHasError('required', 'firstName')">First name is required</div>
+                    </div>
+                    <div class="col-lg-4" >
+                        <label class="form-label">{{questionnaire.questionnaire[0].soru}}</label>
+                        <input type="text" class="form-control form-control-lg form-control-solid"
+                               placeholder="{{questionnaire.questionnaire[0].soru}}" autocomplete="off" formControlName="cevap1"/>
+                    </div>
+                    <div class="col-lg-4" >
+                        <label class="form-label">{{questionnaire.questionnaire[1].soru}}</label>
+                        <ul>
+                            <li *ngFor="let answers of checkboxAnswers index as i">
+                                <mat-checkbox formControlName="chkbox{{i+1}}">
+                                    {{answers.cevap}}
+                                </mat-checkbox>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-4" >
+                        <label class="form-label">{{questionnaire.questionnaire[2].soru}}</label>
+                        <input type="text" class="form-control form-control-lg form-control-solid"
+                               placeholder="{{questionnaire.questionnaire[2].soru}}" autocomplete="off" formControlName="cevap3"/>
+                    </div>
+                    <div class="col-lg-4" >
+                        <label class="form-label">{{questionnaire.questionnaire[3].soru}}</label>
+                        <input type="text" class="form-control form-control-lg form-control-solid"
+                               placeholder="{{questionnaire.questionnaire[3].soru}}" autocomplete="off" formControlName="cevap4"/>
+                    </div>
+                    <div class="col-lg-4" >
+                        <label class="form-label">{{questionnaire.questionnaire[4].soru}}</label>
+                        <input type="text" class="form-control form-control-lg form-control-solid"
+                               placeholder="{{questionnaire.questionnaire[4].soru}}" autocomplete="off" formControlName="cevap5"/>
+                    </div>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light btn-elevate mr-2" (click)="modal.dismiss()">Cancel</button>
+        <ng-container>
+            <button type="submit" class="btn btn-primary btn-elevate" (click)="save()" >Save</button>
+        </ng-container>
+    </div>
+</div>

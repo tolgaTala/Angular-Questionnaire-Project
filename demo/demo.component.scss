@@ -1,0 +1,64 @@
+
+
+/* Please ❤ this if you like it! */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+.soru{
+
+  height: 360px;
+  text-align: center;
+  margin-top: 20px;
+}
+.alan{
+  margin-top: 10px;
+  margin: 10px;
+}
+.etkisiz{
+  pointer-events: none;
+}
+:host {
+  ::ng-deep .confirmation-content{
+    background-color: #ffffff;
+    color: black;
+    box-shadow: 0 14px 35px 0 rgba(9,9,12,0.4);
+
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .logo {
+    top: 30px;
+    left: 20px;
+  }
+  .dark-light:checked + label,
+  .dark-light:not(:checked) + label{
+    top: 20px;
+    right: 20px;
+  }
+}
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+}
+li {
+  margin: 10px;
+  float: left;
+}

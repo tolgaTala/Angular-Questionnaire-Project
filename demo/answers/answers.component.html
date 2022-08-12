@@ -1,0 +1,41 @@
+<table class="table table-head-custom table-vertical-center overflow-hidden mt-4">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Anketi Yapanın Adı</th>
+        <th scope="col">Anket değiştirilme tarihi</th>
+        <th scope="col">Anketi Güncelle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let qua of questionnaires index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{qua.firstName}}</td>
+        <td>{{qua.updateDate | date: 'medium'}}</td>
+        <td>
+            <a title="Edit questionnaire" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
+               (click)="showEditingModal(qua)">
+                <span [inlineSVG]="'./assets/media/svg/icons/Communication/Write.svg'" cacheSVG="true"
+                      class="svg-icon svg-icon-md svg-icon-primary">
+                </span>
+            </a>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+<!--<p-dialog header="" [(visible)]="displayBasic" styleClass="confirmation-content" [style]="{width: '30vw'}" >-->
+<!--    <div class="modal-header">-->
+<!--        <h4 class="modal-title">Anket Soruları Cevapları</h4>-->
+<!--        <button type="button" class="btn-close" aria-label="Close" (click)="displayBasic=false"></button>-->
+<!--    </div>-->
+<!--    <div class="modal-body">-->
+<!--        <p *ngFor="let sorular of questionnaires index as i">-->
+<!--            {{i+1}}. Sorunun Cevabı = {{sorular.firstName}}-->
+<!--        </p>-->
+<!--    </div>-->
+<!--    <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-outline-dark" (click)="displayBasic=false">Kapat</button>-->
+<!--    </div>-->
+<!--</p-dialog>-->
